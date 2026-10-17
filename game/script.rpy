@@ -1,33 +1,36 @@
-﻿# The script of the game goes in this file.
+﻿define y = Character("Yuna", color="#e8a6b8")
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+default player_name = "Player"
+default trusted_yuna = False
+default answered_honestly = False
 
-define e = Character("Eileen")
-
-
-# The game starts here.
+default persistent.yuna_net = False
+default persistent.last_player_name = ""
 
 label start:
+    scene black
+    with fade
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+    pause 2.0
 
-    scene bg room
+    centered "{size=-3}version 1.0.0{/size}"
+    pause 3.0
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
+    centered "{size=-3}version 1.0.0{/size}"
+    pause 2.0
 
-    show eileen happy
+    y "Oh."
+    y "You're here."
+    y "I thought nobody else was going to open this."
+    pause 1.5
 
-    # These display lines of dialogue.
+    y "Sorry. That seemed weird, didn't it?"
+    y "Let's start over."
+    y "Hi! I'm Yuna."
+    y "What's your name?"
+    $ player_name = renpy.input("Your name", length=20).strip()
 
-    e "You've created a new Ren'Py game."
-
-    e "Once you add a story, pictures, and music, you can release it to the world!"
-
-    # This ends the game.
+    if player_name == "":
+        $ player_name = "Player"
 
     return
