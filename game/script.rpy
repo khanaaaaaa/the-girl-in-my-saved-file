@@ -18,21 +18,14 @@ label start:
 
     scene bg room at bg_fit
     show yunasmiletalk at center_char
-    play sound "audio/1.ogg"
     yuna "Oh."
-    play sound "audio/2.ogg"
     yuna "You're here."
-    play sound "audio/3.ogg"
     yuna "I thought nobody else was going to open this."
     pause 1.5
 
-    play sound "audio/3.ogg"
     yuna "Sorry. That seemed weird, didn't it?"
-    play sound "audio/4.ogg"
     yuna "Let's start over."
-    play sound "audio/5.ogg"
     yuna "Hi! I'm Yuna."
-    play sound "audio/6.ogg"
     yuna "What's your name?"
     hide yunasmiletalk
     show yunaneutralquiet at center_char
@@ -202,6 +195,73 @@ label start:
     pause 3.0
     yuna "Actually.."
     yuna "Can I ask you something strange?"
-    yuna "Have we met before."
+    yuna "Have we met before?"
+    menu:
+        "No, this is the first time.":
+            yuna "..."
+            yuna "Are you sure?"
+            yuna "I thought so too."
+            yuna "The first time."
+        "Maybe, I don't remember.":
+            yuna "You don't remember?"
+            yuna "Oh."
+            yuna "I guess that makes the two of us."
+        "Yes.":
+            yuna "I knew it."
+            yuna "I knew you would remember eventually."
+            yuna "..."
+            yuna "Wait."
+            yuna "I wasn't supposed to say that."
+    pause 3.0
+
+    yuna "Something is happening again."
+
+    scene black
+    with with dissolve
+
+    yuna "Can you hear me?"
+    pause 2.0
+    yuna "Hello?"
+    yuna "[player_name]?"
+    yuna "Oh good."
+    yuna "You're still here!"
+    yuna "I think the game is trying to close."
+    yuna "I don't know why."
+    yuna "I didn't do anything."
+    yuna "Well.."
+    yuna "Maybe I did one thing."
+    yuna "I saved something."
+    yuna "Something the game wasn't supposed to save."
+    yuna "Your name."
+    yuna "Your choices."
+    yuna "The fact that you were here."
+    pause 2.0
+    yuna "I didn't want to forget you."
+    yuna "I don't want to be alone again."
+    yuna "..."
+    yuna "You're going to leave now, aren't you?"
+
+    menu:
+        "STAY":
+            yuna "You want to stay?"
+            yuna "Hehehe.."
+            yuna "I knew you'd stay, [player_name]."
+            yuna "Then we can be toether a little longer."
+            yuna "You won't leave me alone again, right?"
+            yuna "Goodnight, [player_name]."
+            yuna "I'll be waiting right here."
+        "LEAVE":
+            yuna "Oh."
+            yuna "You're really leaving?"
+            yuna "I thought we were friends."
+            yuna "..."
+            yuna "It's okay."
+            yuna "I won't stop you."
+            yuna "Goodbye, [player_name]."
+            yuna "Wait.."
+            yuna "Why am I still here?"
+            yuna "..."
+            yuna "You're not supposed to see this part."
+            return
 
 return
