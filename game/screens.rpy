@@ -355,26 +355,29 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
+    add "cover.jpg":
+        xysize (config.screen_width, config.screen_height)
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
+    text "THE GIRL IN MY SAVED FILE":
+        xalign 0.5
+        yalign 0.68
+        size 48
+        font "main.ttf"
+        color "#fff0f5"
+        outlines [(2, "#170d14", 0, 2)]
 
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    use navigation
+    textbutton "START":
+        xalign 0.5
+        yalign 0.80
+        text_size 30
+        text_color "#ffffff"
+        text_hover_color "#ffb4cf"
+        text_font "main.ttf"
 
-    if gui.show_name:
+        background None
+        hover_background None
 
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+        action Start()
 
 
 style main_menu_frame is empty

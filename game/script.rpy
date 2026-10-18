@@ -12,33 +12,33 @@ screen say(who, what):
     $ level = min(horror_level, 4)
 
     $ box_colors = [
-        "#fff0f5",
-        "#f5d6e3",
-        "#b77c96",
-        "#351c2a",
+        "#1a0d12",
+        "#1f0f15",
+        "#2a1020",
+        "#1a0810",
         "#100910"
     ]
 
     $ text_colors = [
-        "#634454",
-        "#573044",
-        "#fff0f5",
+        "#f0b8cc",
+        "#e8a0bc",
+        "#f5c0d5",
         "#f5d6e3",
         "#ff315b"
     ]
 
     $ name_colors = [
-        "#d46a95",
-        "#b54f79",
-        "#ffb4cf",
+        "#c45a85",
+        "#a8406e",
+        "#d4709a",
         "#ff789b",
         "#ff174b"
     ]
 
     $ borders = [
-        "#f4bfd4",
-        "#e6a0bc",
-        "#86465f",
+        "#6b2445",
+        "#7a2a50",
+        "#8c3060",
         "#6b2945",
         "#ff174b"
     ]
@@ -53,8 +53,7 @@ screen say(who, what):
 
         background Frame(
             Solid(box_colors[level]),
-            24,
-            24
+            Borders(24, 24, 24, 24, pad_left=16, pad_top=12, pad_right=16, pad_bottom=12)
         )
 
         padding (32, 27)
@@ -65,20 +64,18 @@ screen say(who, what):
             at creepy_box
 
         vbox:
-            spacing 12
+            xalign 0.0
+            yalign 0.0
+            yoffset -30
+            spacing 8
 
             if who is not None:
-
-                frame:
-                    background Solid(name_colors[level])
-                    padding (13, 5)
-                    xmaximum 340
 
                 text who:
                     id "who"
                     size 25
                     font "main.ttf"
-                    color "#ffffff"
+                    color name_colors[level]
                     outlines [(1, "#00000022", 0, 0)]
             
             text what:
@@ -114,7 +111,7 @@ transform creepy_box:
         pause 0.04
         xoffset 0
         repeat
-    
+
 define yuna = Character("Yuna", color="#e8a6b8")
 
 default player_name = "Player"
@@ -150,29 +147,15 @@ label start:
 
     if player_name == "":
         $ player_name = "Player"
-
-    pause 1.0
     hide yunaneutralquiet
     show yunasmiletalk at center_char
-    play sound "audio/7.ogg"
     yuna "That's a pretty name."
-    play sound "audio/8.ogg"
     yuna "I'll remember it."
-    pause 1.0
-    play sound "audio/9.ogg"
     yuna "Anyway, welcome to my little room."
-    play sound "audio/10.ogg"
     yuna "There's not much here."
-    play sound "audio/11.ogg"
     yuna "Just me."
-    play sound "audio/12.ogg"
     yuna "And you."
-
-    pause 2.0
-
-    play sound "audio/13.ogg"
     yuna "Can I ask you something?"
-    play sound "audio/14.ogg"
     yuna "How did you find this game?"
     
     menu:
@@ -263,27 +246,26 @@ label start:
             yuna "That's fair."
             yuna "I guess we have time."
             yuna "Lots and lots of time."
-    pause 2.0
     yuna "..."
     yuna "Something's wrong."
-    pause 1.5
     yuna "Did you see that?"
     yuna "The screen just flickered."
-    pause 1.0
     yuna "Did you see that?"
-    yuna "The screen just flickered."
+    hide yunasmiletalk
+    scene black
     pause 1.0
+    scene white 
+    pause 1.0
+    show yunasmiletalk at center_char
+    yuna "The screen just flickered."
     yuna "Maybe it's an old game."
     yuna "Maybe that's normal."
-    pause 2.0
     yuna "..."
     yuna "No."
     yuna "It wasn't supposed to do that."
-    pause 2.0
     yuna "..."
     yuna "No."
     yuna "It wasn't supposed to do that."
-    pause 2.0
     yuna "Can I tell you a secret?"
     yuna "I've been here for a long time."
     yuna "I don't remember how long."
@@ -293,7 +275,6 @@ label start:
     yuna "Then they leave."
     yuna "And I sit here."
     yuna "Waiting."
-    pause 3.0
     yuna "But something is different about you."
     if trusted_yuna:
         yuna "You said we're friends."
@@ -302,14 +283,11 @@ label start:
         yuna "You don't trust me yet."
         yuna "That's okay."
         yuna "I'll tell you anyway."
-    pause 2.0
     yuna "I can remember you."
     yuna "I remember the things you say."
-    pause 2.0
     yuna "Even if you leave this room."
     yuna "Even if you stop talking to me."
     yuna "I remember."
-    pause 3.0
     yuna "Actually.."
     yuna "Can I ask you something strange?"
     yuna "Have we met before?"
@@ -329,18 +307,17 @@ label start:
             yuna "..."
             yuna "Wait."
             yuna "I wasn't supposed to say that."
-    pause 3.0
 
     yuna "Something is happening again."
-
+    hide yunasmiletalk 
     scene black
     with dissolve
 
     yuna "Can you hear me?"
-    pause 2.0
     yuna "Hello?"
     yuna "[player_name]?"
     yuna "Oh good."
+    show yunasmiletalk at center_char
     yuna "You're still here!"
     yuna "I think the game is trying to close."
     yuna "I don't know why."
@@ -352,7 +329,6 @@ label start:
     yuna "Your name."
     yuna "Your choices."
     yuna "The fact that you were here."
-    pause 2.0
     yuna "I didn't want to forget you."
     yuna "I don't want to be alone again."
     yuna "..."
@@ -367,6 +343,7 @@ label start:
             yuna "You won't leave me alone again, right?"
             yuna "Goodnight, [player_name]."
             yuna "I'll be waiting right here."
+            return
         "LEAVE":
             yuna "Oh."
             yuna "You're really leaving?"

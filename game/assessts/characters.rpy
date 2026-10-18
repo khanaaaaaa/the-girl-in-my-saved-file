@@ -1,0 +1,1 @@
+image bg room = "images/bedroom.avif"
