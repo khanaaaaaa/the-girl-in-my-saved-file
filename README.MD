@@ -31,3 +31,8 @@ None of the character art in this project belongs to me.
 All character sprites were created using a picrew by wawawa_o_ on X. Picrew link: https://picrew.me/en/image_maker/2308695
 
 Background images were sourced externally and are not original assessts.
+
+# Screenshots:
+
+![alt text](image.png)
+![alt text](image-1.png)
