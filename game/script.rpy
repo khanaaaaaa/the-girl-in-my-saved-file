@@ -1,36 +1,63 @@
 ﻿default horror_level = 0
 
+define gui.dialogue_font = "main.ttf"
+
 init python:
     import random
 
-    def dialogue_box_color(level):
-        if level == 0:
-            return "#f8dce8"
-        elif level == 1:
-            return "#e8b8cb"
-        elif level == 2:
-            return "#b77c96"
-        elif level == 3:
-            return "#593443"
-        else:
-            return "#170d14"
-
 screen say(who, what):
-    style_prefix "say"
+    
+    zorder 100
+
+    $ level = min(horror_level, 4)
+
+    $ box_colors = [
+        "#fff0f5",
+        "#f5d6e3",
+        "#b77c96",
+        "#351c2a",
+        "#100910"
+    ]
+
+    $ text_colors = [
+        "#634454",
+        "#573044",
+        "#fff0f5",
+        "#f5d6e3",
+        "#ff315b"
+    ]
+
+    $ name_colors = [
+        "#d46a95",
+        "#b54f79",
+        "#ffb4cf",
+        "#ff789b",
+        "#ff174b"
+    ]
+
+    $ borders = [
+        "#f4bfd4",
+        "#e6a0bc",
+        "#86465f",
+        "#6b2945",
+        "#ff174b"
+    ]
 
     window:
         id "window"
 
-        background Solid(
-            ["#f8dce8", "#e8b8cb", "#b77c96",
-            "#593443", "#170d14"][min(horror_level, 4)]
-        )
-
         xalign 0.5
         yalign 1.0
-        xsize 0.92
-        ysize 190
-        padding (30, 20)
+        xsize 0.94
+        ysize 205
+
+        background Frame(
+            Solid(box_colors[level]),
+            24,
+            24
+        )
+
+        padding (32, 27)
 
         if horror_level < 3:
             at sweet_box
@@ -38,32 +65,56 @@ screen say(who, what):
             at creepy_box
 
         vbox:
-            spacing 8
+            spacing 12
 
             if who is not None:
 
+                frame:
+                    background Solid(name_colors[level])
+                    padding (13, 5)
+                    xmaximum 340
+
                 text who:
                     id "who"
-                    color ["#b34e78", "#923754", "#ffb4cf", "#ff6b91", "#ff244f"][min(horror_level, 4)]
-                    size 27
-                    font "DejaVuSans.ttf"
+                    size 25
+                    font "main.ttf"
+                    color "#ffffff"
+                    outlines [(1, "#00000022", 0, 0)]
             
             text what:
                 id "what"
-                color ["#684453", "#573041", "#fff0f5", "#f7d6df", "#ff244f"][min(horror_level, 4)]
-                size 23
-                font "DejaVuSans.ttf"
+                font "main.ttf"
+                size 26
+                color text_colors[level]
+                outlines [
+                    (1, "#00000018", 0, 1)
+                ]
+
+        if horror_level < 3:
+            add Solid("#00000000")
+        else:
+            add Solid("#ff174b12")
 
 transform sweet_box:
     alpha 0.0
-    yoffset 20
-    ease 0.4 alpha 1.0 yoffset 0
+    yoffset 35
+    ease 0.5 alpha 1.0 yoffset 0
 
 transform creepy_box:
     alpha 0.0
-    xoffset 5
-    ease 0.1 alpha 1.0 xoffset 0
-
+    yoffset 8
+    xoffset 3
+    ease 0.12 alpha 1.0 yoffset 0 xoffset 0
+    block:
+        xoffset 0
+        pause 2.0
+        xoffset 2
+        pause 0.04
+        xoffset -2
+        pause 0.04
+        xoffset 0
+        repeat
+    
 define yuna = Character("Yuna", color="#e8a6b8")
 
 default player_name = "Player"
