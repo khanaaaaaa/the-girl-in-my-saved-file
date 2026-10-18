@@ -254,7 +254,7 @@ label start:
     hide yunasmiletalk
     scene black
     pause 1.0
-    scene white 
+    scene bg white at center_char
     pause 1.0
     show yunasmiletalk at center_char
     yuna "The screen just flickered."
