@@ -1,4 +1,70 @@
-﻿define yuna = Character("Yuna", color="#e8a6b8")
+﻿default horror_level = 0
+
+init python:
+    import random
+
+    def dialogue_box_color(level):
+        if level == 0:
+            return "#f8dce8"
+        elif level == 1:
+            return "#e8b8cb"
+        elif level == 2:
+            return "#b77c96"
+        elif level == 3:
+            return "#593443"
+        else:
+            return "#170d14"
+
+screen say(who, what):
+    style_prefix "say"
+
+    window:
+        id "window"
+
+        background Solid(
+            ["#f8dce8", "#e8b8cb", "#b77c96",
+            "#593443", "#170d14"][min(horror_level, 4)]
+        )
+
+        xalign 0.5
+        yalign 1.0
+        xsize 0.92
+        ysize 190
+        padding (30, 20)
+
+        if horror_level < 3:
+            at sweet_box
+        else:
+            at creepy_box
+
+        vbox:
+            spacing 8
+
+            if who is not None:
+
+                text who:
+                    id "who"
+                    color ["#b34e78", "#923754", "#ffb4cf", "#ff6b91", "#ff244f"][min(horror_level, 4)]
+                    size 27
+                    font "DejaVuSans.ttf"
+            
+            text what:
+                id "what"
+                color ["#684453", "#573041", "#fff0f5", "#f7d6df", "#ff244f"][min(horror_level, 4)]
+                size 23
+                font "DejaVuSans.ttf"
+
+transform sweet_box:
+    alpha 0.0
+    yoffset 20
+    ease 0.4 alpha 1.0 yoffset 0
+
+transform creepy_box:
+    alpha 0.0
+    xoffset 5
+    ease 0.1 alpha 1.0 xoffset 0
+
+define yuna = Character("Yuna", color="#e8a6b8")
 
 default player_name = "Player"
 default trusted_yuna = False
@@ -217,7 +283,7 @@ label start:
     yuna "Something is happening again."
 
     scene black
-    with with dissolve
+    with dissolve
 
     yuna "Can you hear me?"
     pause 2.0
