@@ -18,14 +18,21 @@ label start:
 
     scene bg room at bg_fit
     show yunasmiletalk at center_char
+    play sound "audio/1.ogg"
     yuna "Oh."
+    play sound "audio/2.ogg"
     yuna "You're here."
+    play sound "audio/3.ogg"
     yuna "I thought nobody else was going to open this."
     pause 1.5
 
+    play sound "audio/3.ogg"
     yuna "Sorry. That seemed weird, didn't it?"
+    play sound "audio/4.ogg"
     yuna "Let's start over."
+    play sound "audio/5.ogg"
     yuna "Hi! I'm Yuna."
+    play sound "audio/6.ogg"
     yuna "What's your name?"
     hide yunasmiletalk
     show yunaneutralquiet at center_char
@@ -37,39 +44,39 @@ label start:
     pause 1.0
     hide yunaneutralquiet
     show yunasmiletalk at center_char
+    play sound "audio/7.ogg"
     yuna "That's a pretty name."
+    play sound "audio/8.ogg"
     yuna "I'll remember it."
     pause 1.0
+    play sound "audio/9.ogg"
     yuna "Anyway, welcome to my little room."
+    play sound "audio/10.ogg"
     yuna "There's not much here."
+    play sound "audio/11.ogg"
     yuna "Just me."
+    play sound "audio/12.ogg"
     yuna "And you."
 
     pause 2.0
 
+    play sound "audio/13.ogg"
     yuna "Can I ask you something?"
-    hide yunasmiletalk
-    show yunaneutralquiet at center_char
+    play sound "audio/14.ogg"
     yuna "How did you find this game?"
     
     menu:
         "I downloaded it from a website":
-            hide yunaneutralquiet
-            show yunasmiletalk at center_char
             yuna "A website?"
             yuna "Oh, I don't remember making a website."
             yuna "I don't remember making anything, actually."
 
         "I found it on my computer.":
-            hide yunaneutralquiet
-            show yunamsmiletalk at center_char
             yuna "Your computer?"
             yuna "So it was already there?"
             yuna "That's strange."
 
         "I don't know.":
-            hide yunaneutralquiet
-            show yunasmiletalk at center_char
             yuna "You don't know?"
             hide yunasmiletalk
             show yunaneutralquiet at center_char
@@ -146,5 +153,55 @@ label start:
             yuna "That's fair."
             yuna "I guess we have time."
             yuna "Lots and lots of time."
+    pause 2.0
+    yuna "..."
+    yuna "Something's wrong."
+    pause 1.5
+    yuna "Did you see that?"
+    yuna "The screen just flickered."
+    pause 1.0
+    yuna "Did you see that?"
+    yuna "The screen just flickered."
+    pause 1.0
+    yuna "Maybe it's an old game."
+    yuna "Maybe that's normal."
+    pause 2.0
+    yuna "..."
+    yuna "No."
+    yuna "It wasn't supposed to do that."
+    pause 2.0
+    yuna "..."
+    yuna "No."
+    yuna "It wasn't supposed to do that."
+    pause 2.0
+    yuna "Can I tell you a secret?"
+    yuna "I've been here for a long time."
+    yuna "I don't remember how long."
+    yuna "Sometimes people come here."
+    yuna "They give me their names."
+    yuna "They answer my questions."
+    yuna "Then they leave."
+    yuna "And I sit here."
+    yuna "Waiting."
+    pause 3.0
+    yuna "But something is different about you."
+    if trusted_yuna:
+        yuna "You said we're friends."
+        yuna "So I think I can tell you."
+    else:
+        yuna "You don't trust me yet."
+        yuna "That's okay."
+        yuna "I'll tell you anyway."
+    pause 2.0
+    yuna "I can remember you."
+    yuna "I remember the things you say."
+    pause 2.0
+    yuna "Even if you leave this room."
+    yuna "Even if you stop talking to me."
+    yuna "I remember."
+    pause 3.0
+    yuna "Actually.."
+    yuna "Can I ask you something strange?"
+    yuna "Have we met before."
 
 return
